@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+/*!
+ * Bootstrap Clean Alert Vanilla -http://felipetravassos.com/
+ * Version - 0.2
+ * by Felipe Travassos
+ */
+
+#modalWindow .modal-footer
+{
+    border-top: none !important;
+}
+
+#modalWindow .na-text
+{
+    font-size: 15px;
+    font-weight: 500 !important;
+}
+
+
+.bg-dark.modal-content {
+    color: #fff !important;
+}
+
+.bg-dark.modal-content .modal-header, .bg-dark.modal-content .modal-body {
+    border-bottom: 1px solid #23282d;
+}
+
+.bg-dark.modal-content .modal-footer, .bg-dark.modal-content .modal-body {
+    border-top: 1px solid #414b54;
+}
+
+.na-svgbox
+{
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+     margin-bottom: 30px;
+}
+
