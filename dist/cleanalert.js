@@ -5,11 +5,49 @@
  */
 
 var jsUrl = document.currentScript ? document.currentScript.src : "";
+var libUrl = jsUrl.substring(0, jsUrl.lastIndexOf("/") + 1);
+
+function callalert(title, text, type, btntext, btntype, size, bg) {
+  var typeprit = type;
+
+  var html = '<div class="modal-dialog modal-' + size + '">';
+  html += '<div class="modal-content">';
+  var timestamp = new Date().getTime();
+  html += '<div class="modal-body text-center ">';
+  html +=
+    '<div class="animation" style="background-image: url(' +
+    libUrl +
+    "animations/" +
+    type +
+    ".svg?v=" +
+    timestamp +
+    ')"></div>';
+
+  html += '<h5 class="na-title text-' + typeprit + '">' + title + "</h5>";
+  html += '<div class="na-text text-' + textcolor + '">' + text + "</div>";
+
+  html += "</div>";
+  html += '<div class="modal-footer d-block text-center">';
+
+  html += '<span data-bs-dismiss="modal" class="btn px-3 btn-' + btntype + '"';
+  html += " >" + btntext;
+  html += "</span>";
+
+  html += "</div>"; // footer
+  html += "</div>"; // content
+  html += "</div>"; // dialog
+
+  document.getElementById("modalWindow").innerHTML = html;
+
+  var bgclean = "";
+  var textcolor = "secondary";
+
+  var myModal = new bootstrap.Modal(document.getElementById("modalWindow"), {});
+  myModal.show(document.getElementById("modalWindow"));
+}
+
 window.onload = function () {
   // modalWindow
-  var libUrl = jsUrl.substring(0, jsUrl.lastIndexOf("/") + 1);
-
- 
 
   var modalWindow = document.createElement("div");
 
@@ -23,53 +61,6 @@ window.onload = function () {
   document.body.appendChild(modalWindow);
 
   document.getElementById("modalWindow").innerHTML = "modalWindow";
-
-  function callalert(title, text, type, btntext, btntype, size, bg) {
-    var typeprit = type;
-
-    var html = '<div class="modal-dialog modal-' + size + '">';
-    html += '<div class="modal-content bg-' + bg + '">';
-	var timestamp = new Date().getTime();
-    html += '<div class="modal-body text-center ">';
-    html +=
-      '<div class="animation" style="background-image: url(' +
-      libUrl +
-      "animations/" +
-      type +
-      ".svg?v=" +
-      timestamp +
-      ')"></div>';
-
-    html += '<h5 class="na-title text-' + typeprit + '">' + title + "</h5>";
-    html += '<div class="na-text text-' + textcolor + '">' + text + "</div>";
-
-    html += "</div>";
-    html += '<div class="modal-footer d-block text-center">';
-
-    html +=
-      '<span data-bs-dismiss="modal" class="btn px-3 btn-' + btntype + '"';
-    html += " >" + btntext;
-    html += "</span>";
-
-    html += "</div>"; // footer
-    html += "</div>"; // content
-    html += "</div>"; // dialog
-
-    document.getElementById("modalWindow").innerHTML = html;
-
-    var bgclean = "";
-    var textcolor = "secondary";
-    if (bg == "dark") {
-      bgclean = "bg-dark";
-      textcolor = "light";
-    }
-
-    var myModal = new bootstrap.Modal(
-      document.getElementById("modalWindow"),
-      {}
-    );
-    myModal.show(document.getElementById("modalWindow"));
-  }
 
   var clenalertbtn = document.querySelectorAll(".clenalertbtn");
 
